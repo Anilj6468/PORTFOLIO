@@ -1,0 +1,121 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+/* header Section-1 Starts */
+.hero_section
+{
+    background-image: url(../Images/hero-bg.jpg);
+    height: 550px;
+    background-color: rgba(17, 16, 16, 0.603);
+    background-blend-mode: overlay;
+}
+.hero_section_1
+{
+    padding: 120px;
+    top: 40px;
+    left: 80px;
+}
+p
+{
+    font-size: 15px;
+    margin-top: 25px;
+    font-weight: 400;
+}
+.btn1
+{
+    width: 180px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #fdfdfd;
+    color: #000000;
+    font-size: 15px;
+}
+.btn1:hover
+{
+    background-color: rgb(90, 88, 88);
+    color: white;
+    border: 2px solid white;
+}
+.btn2
+{
+    width: 180px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #f1db25;
+    color: #ffffff;
+    font-size: 15px;
+}
+.btn2:hover
+{
+    background-color: rgba(90, 88, 88, 0.397);
+    color: #f1db25;
+    border: 2px solid #f1db25;
+}
+/* header Section-1 Ends */
+
+/* section-2 Starts */
+.section_2_2 
+{
+  height: 55vh;
+  position: relative;
+  top: 30px;
+  right: 80px;
+}
+.btn
+{
+    width: 140px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #f1db25;
+    color: #ffffff;
+    font-size: 15px;
+}
+.btn:hover
+{
+    background-color: rgb(255, 255, 255);
+    color: #f1db25;
+    border: 2px solid #f1db25;
+}
+/* section-2 Ends */
+
+/* section 3 css starts */
+.section_3
+{
+    margin-top: 60px;
+}
+.container
+{
+    height: 400px;
+    margin-top: 10px;
+}
+.icon i 
+{
+  font-size: 60px;
+}
+/* section 3 css ends */
+
+/* section 4 css starts */
+.section_4
+{
+    background-image: url(../Images/contact-bg.jpg);
+    height: 500px;
+    margin-top: 40px;
+}
+/* section 4 css ends */
+
+/* footer CSS Starts */
+.btn
+{
+    background-color: rgb(146, 117, 79);
+    color: cyan;
+}
+.btn:hover
+{
+    background-color: lightcoral;
+}
+/* footer CSS Ends */

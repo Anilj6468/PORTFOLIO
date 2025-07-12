@@ -1,0 +1,25 @@
+@media(max-width:991px)
+{
+.list ul
+{
+  display: none;
+  position: absolute;
+  top: 7vh;
+  left: 0;
+  background-color: tan;
+  width: 100%;
+  text-align: center;
+}
+.list ul li
+{
+    padding: 10px;
+}
+.list label
+{
+    display: block;
+}
+.list input[type="checkbox"]:checked+ul
+{
+    display: none;
+}
+}
