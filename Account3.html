@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank Account Open Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      padding: 20px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label, input, button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #accountList {
+      margin-top: 20px;
+      padding: 10px;
+      background: #e9ecef;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Create Account -->
+  <form id="bankAccountForm">
+    <h2><strong>Create New Account - Fill Up the Form</strong></h2>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" required />
+    
+    <label for="balance">Enter Your Initial Balance:</label>
+    <input type="number" id="balance" required />
+
+    <button type="submit">Create Account</button>
+  </form>
+
+  <!-- Deposit -->
+  <form id="depositForm">
+    <h2>Deposit Form</h2>
+    <input type="number" placeholder="Account Number" id="accountNumber" required />
+    <input type="number" placeholder="Deposit Amount" id="deposit" required />
+
+    <button type="submit">Deposit Amount</button>
+  </form>
+
+  <!-- Withdraw -->
+  <form id="withdrawForm">
+    <h2>Withdraw Form</h2>
+    <input type="number" placeholder="Account Number" id="withdrawAccountNumber" required />
+    <input type="number" placeholder="Withdraw Amount" id="withdrawAmount" required />
+
+    <button type="submit">Withdraw Amount</button>
+  </form>
+
+  <!-- Account List         -->
+  <div id="accountList">
+    <h3>Accounts:</h3>
+  </div>
+
+  <script>
+    class BankAccount {
+      constructor(customerName, balance) {
+        this.customerName = customerName;
+        this.accountNumber = Math.floor(Math.random() * 1000000000000);
+        this.balance = balance;
+      }
+
+      deposit(amount) {
+        this.balance += amount;
+      }
+
+      withdraw(amount) {
+        if (amount <= this.balance) {
+          this.balance -= amount;
+        } else {
+          alert('Insufficient balance!');
+        }
+      }
+    }
+
+    const BankAccounts = [];
+
+    // Create Account
+    document.getElementById("bankAccountForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const customerName = document.getElementById("customerName").value;
+      const balance = parseFloat(document.getElementById("balance").value);
+
+      const account = new BankAccount(customerName, balance);
+      BankAccounts.push(account);
+      displayAccounts();
+
+      e.target.reset();
+    });
+
+    // Deposit
+    document.getElementById("depositForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const accountNumber = parseInt(document.getElementById("accountNumber").value);
+      const amount = parseFloat(document.getElementById("deposit").value);
+
+      const account = BankAccounts.find(acc => acc.accountNumber === accountNumber);
+      if (account) {
+        account.deposit(amount);
+        displayAccounts();
+        alert("Deposit successful!");
+      } else {
+        alert("Account not found.");
+      }
+
+      e.target.reset();
+    });
+
+    // Withdraw
+    document.getElementById("withdrawForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const accountNumber = parseInt(document.getElementById("withdrawAccountNumber").value);
+      const amount = parseFloat(document.getElementById("withdrawAmount").value);
+
+      const account = BankAccounts.find(acc => acc.accountNumber === accountNumber);
+      if (account) {
+        account.withdraw(amount);
+        displayAccounts();
+      } else {
+        alert("Account not found.");
+      }
+
+      e.target.reset();
+    });
+
+    // Display Accounts
+    function displayAccounts() {
+      const list = document.getElementById("accountList");
+      list.innerHTML = "<h3>Accounts:</h3>";
+      BankAccounts.forEach(account => {
+        const p = document.createElement("p");
+        p.textContent = `${account.customerName} | Account: ${account.accountNumber} | Balance: $${account.balance.toFixed(2)}`;
+        list.appendChild(p);
+      });
+    }
+  </script>
+</body>
+</html>
