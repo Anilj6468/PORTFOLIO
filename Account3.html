@@ -46,8 +46,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Create Account -->
   <form id="bankAccountForm">
     <h2><strong>Create New Account - Fill Up the Form</strong></h2>
     <label for="customerName">Customer Name:</label>
@@ -58,8 +56,6 @@
 
     <button type="submit">Create Account</button>
   </form>
-
-  <!-- Deposit -->
   <form id="depositForm">
     <h2>Deposit Form</h2>
     <input type="number" placeholder="Account Number" id="accountNumber" required />
@@ -68,7 +64,6 @@
     <button type="submit">Deposit Amount</button>
   </form>
 
-  <!-- Withdraw -->
   <form id="withdrawForm">
     <h2>Withdraw Form</h2>
     <input type="number" placeholder="Account Number" id="withdrawAccountNumber" required />
@@ -77,7 +72,6 @@
     <button type="submit">Withdraw Amount</button>
   </form>
 
-  <!-- Account List         -->
   <div id="accountList">
     <h3>Accounts:</h3>
   </div>
@@ -105,7 +99,6 @@
 
     const BankAccounts = [];
 
-    // Create Account
     document.getElementById("bankAccountForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -119,7 +112,6 @@
       e.target.reset();
     });
 
-    // Deposit
     document.getElementById("depositForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -138,7 +130,6 @@
       e.target.reset();
     });
 
-    // Withdraw
     document.getElementById("withdrawForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -156,7 +147,6 @@
       e.target.reset();
     });
 
-    // Display Accounts
     function displayAccounts() {
       const list = document.getElementById("accountList");
       list.innerHTML = "<h3>Accounts:</h3>";
