@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anil Jangid SBI Account Project</title>
+</head>
+<body>
+    <form>
+      <input type="text" name="customerName" id="customerName" /> <br><br>
+      <input type="number" name="Balance" id="Balance" /> <br><br>
+
+      <button type="submit">Create Account</button>
+    </form>
+</body>
+</html>
+<script>
+  class BankAccount {
+      constructor(customerName, Balance){
+          this.customerName = customerName
+          this.accountNumber = Math.floor(Math.random() * 12345678902332)
+          this.Balance = Balance;
+      }
+
+      Deposit(amount) {
+          this.Balance += amount;
+      };
+
+      Withdraw(amount) {
+        this.balance -= amount;
+      }
+  };
+
+  // Create Account
+  // const BankAccount = [];
+
+  document.getElementById("customerName").addEventListener("submit", (e) => {
+    e.preventDefault()
+    const customerName = document.getElementById("customerName").value;
+    const Balance = document.getElementById("Balance").value;
+
+    const account = new BankAccount(customerName, balance);
+    BankAccounts.push(account);
+    displayAccounts();
+
+    e.target.reset()
+  });
+</script>

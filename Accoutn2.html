@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Account Open Project</title>
+  </head>
+  <body>
+    <form id="bankAccountForm">
+      <h2><strong>Create New Account - Fill Up the Form</strong></h2>
+      <label for="customerName">Customer Name:</label><br />
+      <input
+        type="text"
+        name="customerName"
+        id="customerName"
+        required
+      /><br /><br />
+
+      <label for="balance">Enter Your Initial Balance:</label><br />
+      <input type="number" name="balance" id="balance" required /><br /><br />
+
+      <button type="submit">Create Account</button>
+    </form>
+    <br><br>
+    <form>
+      <h2>Plz Fill up Deposit Form</h2>
+      <input type="text" name="Enter Your Intial accountNumber" placeholder="accountNumber" id="accountNumber" /><br><br>
+      <input type="text" name="Enter Your Amount" placeholder="deposit" id="deposit" /><br><br>
+
+      <button type="submit">Deposit Amount</button>
+    </form>
+
+    <script>
+      class BankAccount {
+        constructor(customerName, balance) {
+          this.customerName = customerName;
+          this.accountNumber = Math.floor(Math.random() * 1000000000000); // fixed
+          this.balance = balance;
+        }
+
+        Deposit(amount) {
+            deposit += balance + amount;
+        }
+
+        withdraw(amount) {
+          withdraw -= balance - amount;
+        }
+      }
+
+    //   Create account
+      const BankAccounts = [];
+
+      document
+        .getElementById("bankAccountForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const customerName = document.getElementById("customerName").value;
+          const balance = parseFloat(document.getElementById("balance").value);
+
+          const account = new BankAccount(customerName, balance);
+          BankAccounts.push(account);
+
+          console.log(BankAccounts); // for debugging
+
+          // Optional: show the account on screen
+          const accountList = document.getElementById("accountList");
+          const newAccount = document.createElement("p");
+          newAccount.textContent = `${account.customerName} | Account: ${account.accountNumber} | Balance: ${account.balance}`;
+
+          e.target.reset();
+        });
+
+        // Deposit
+    </script>
+  </body>
+</html>
