@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Data Project</title>
+  </head>
+  <body>
+    <table border="1" width="10%">
+      <thead>
+        <tr>
+          <th>SR NO</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Course</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody id="tabledata"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  const collegeStudents = [
+    {
+      id: 1,
+      name: "Amit Sharma",
+      age: 20,
+      course: "Computer Science",
+      year: "2nd",
+    },
+    {
+      id: 2,
+      name: "Neha Verma",
+      age: 21,
+      course: "Electronics",
+      year: "3rd",
+    },
+    {
+      id: 3,
+      name: "Rahul Singh",
+      age: 19,
+      course: "Mechanical",
+      year: "1st",
+    },
+
+    {
+      id: 4,
+      name: "Priya Desai",
+      age: 22,
+      course: "Civil Engineering",
+      year: "4th",
+    },
+    {
+      id: 5,
+      name: "Karan Mehta",
+      age: 20,
+      course: "Information Technology",
+      year: "2nd",
+    },
+  ];
+
+  console.log(collegeStudents[4].id);
+  console.log(collegeStudents[4].name);
+
+  let tr = "";
+
+  collegeStudents.map((anil, index) => {
+    console.log(anil);
+
+    tr += `
+            <tr>
+                <td>${anil.id}</td>
+                <td>${anil.name}</td>
+                <td>${anil.age}</td>
+                <td>${anil.course}</td>
+                <td>${anil.year}</td>
+            </tr>
+        `;
+  });
+  document.getElementById("tabledata").innerHTML = tr;
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // Object
+  // key:value
+
+  let obj1 = {
+    name: "Pushpraj",
+    age: 25,
+    city: "Nasik"
+  };
+
+  let obj = {
+    name: "Raj",
+    age: 20,
+    city: "Pune",
+    // Function
+    // info: function () {
+    //   console.log(
+    //     My Name is ${this.name} My Age is ${this.age} and I am Living in ${this.city}
+    //   );
+    // }
+
+    info: () => {
+      console.log(
+        // My Name is ${obj.name} My Age is ${obj.age} and I am Living in ${obj.city}
+      );
+    }
+  };
+
+  console.log(obj);
+
+  // console.log(
+  //   My Name is ${obj.name} My Age is ${obj.age} and I am Living in ${obj.city}
+  // );
+
+  obj.info();
+
+  // OOPs - Object Oriented Programming
+  // Methods - constructor(), prototype, static
+  // Properties - value
+
+  // Class
+  // object
+
+  // Example
+  // Toyota - Forchuner
+
+  class Car {
+    constructor() {
+      console.log("Hi");
+    }
+  }
+
+  let car1 = new Car();
+  console.log(typeof car1);
+
+  class School {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    info() {
+    //   return My Name is ${this.name} and My Age is ${this.age};
+    }
+  }
+
+  let student = new School("Himil", 25);
+
+  console.log(student);
+  console.log(student.info());
+
+  let student1 = new School("Raj", 18);
+
+  console.log(student1);
+  console.log(student1.info());
+
+  let student2 = new School("Pushpraj", 19);
+
+  console.log(student2);
+  console.log(student2.info());
+</script>

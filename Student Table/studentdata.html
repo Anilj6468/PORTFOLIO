@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anil Jangid Student Data Project</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 90%;
+        margin-top: 20px;
+        margin-left: 60px;
+      }
+      th,
+      td {
+        border: 1px solid #2500f5;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #3a38396b;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <h2 style="text-align: center; color: red;">Plz Fill up the Table Data.</h2>
+      <thead>
+        <tr>
+          <th>SR NO</th>
+          <th>Name</th>
+          <th>Job_Role</th>
+          <th>Location</th>
+          <th>Mobile</th>
+          <th>Company</th>
+        </tr>
+      </thead>
+      <tbody id="studentdata"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  let Student = [
+    {
+      Name: "Anil Jangid",
+      Job_Role: "Fronted Developer",
+      Location: "Ahmedabad",
+      Mobile: 8769666468,
+      Company: "Intesols Pvt Ltd, Ahmedabad"
+    },
+    {
+      Name: "Shubham Jangid",
+      Job_Role: "Backend Developer",
+      Location: "Chennai",
+      Mobile: 9828345678,
+      Company: "Intesols Pvt Ltd, Ahmedabad"
+    },
+    {
+      Name: "Dinesh Jangid",
+      Job_Role: "Junior Professor",
+      Location: "Ajmer",
+      Mobile: 9828345678,
+      Company: "New Modern School, Kuchaman City"
+    },
+    {
+      Name: "Rajesh Jangid",
+      Job_Role: "Junior Architect",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "Webcreata"
+    },
+    {
+      Name: "Krushi Parmar",
+      Job_Role: "Junior Architect",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    },
+    {
+      Name: "Harish Panchal",
+      Job_Role: "Senior Developer",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    },
+    {
+      Name: "Harish Panchal",
+      Job_Role: "Senior Developer",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    },
+    {
+      Name: "Harish Panchal",
+      Job_Role: "Senior Developer",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    },
+    {
+      Name: "Harish Panchal",
+      Job_Role: "Senior Developer",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    },
+    {
+      Name: "Harish Panchal",
+      Job_Role: "Senior Developer",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    },
+    {
+      Name: "Harish Panchal",
+      Job_Role: "Senior Developer",
+      Location: "Jasrana",
+      Mobile: 87696656765,
+      Company: "ArchiDiaries"
+    }
+  ];
+
+  //   console.log(Student);
+  let tr = "";
+
+  Student.map((Student, index) => {
+    // console.log(Student.Name);
+    // console.log(Student.Job_Role);
+    // console.log(Student.Job_Description);
+    // console.log(Student.Location);
+    // console.log(Student.Company);
+    tr += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${Student.Name}</td>
+                <td>${Student.Job_Role}</td>
+                <td>${Student.Location}</td>
+                <td>${Student.Mobile}</td>
+                <td>${Student.Company}</td>
+            </tr>      
+       `;
+  });
+  // Student.map(studentdata);
+
+  document.getElementById("studentdata").innerHTML = tr;
+</script>

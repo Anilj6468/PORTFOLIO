@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form practice project</title>
+  </head>
+  <body>
+    <form onsubmit="HandleFormSubmit(event)">
+      <input
+        type="email"
+        name="email"
+        placeholder="E-Mail"
+        id="email"
+      /><br /><br />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        id="password"
+      /><br /><br />
+
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>
+<script>
+  function HandleFormSubmit(event) {
+    event.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    // console.log(email);
+    // console.log(password);
+    
+    
+    let obj = {
+        email,
+        password,
+    };
+    
+    let arr = JSON.parse(localStorage.getItem("anil")) || [];
+    arr.push(obj);
+    
+    localStorage.setItem("anil", JSON.stringify(arr));
+
+    // console.log(arr);
+
+    // console.log(obj);
+
+    event.target.reset();
+  }
+</script>

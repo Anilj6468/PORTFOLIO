@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form practice project</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    td button {
+      margin-right: 5px;
+      background-color: #28a745;
+    }
+
+    td button:last-child {
+      background-color: #dc3545;
+    }
+
+    td button:hover {
+      opacity: 0.9;
+    }
+  </style>
+  <body>
+    <form onsubmit="HandleFormSubmit(event)">
+      <input
+        type="email"
+        name="email"
+        placeholder="E-mail"
+        id="email"
+      /><br /><br />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        id="password"
+      /><br /><br />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <br /><br />
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="tableData"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  function HandleFormSubmit(event) {
+    event.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    // console.log(email);
+    // console.log(password);
+
+    let obj = {
+      email,
+      password,
+    };
+
+    let arr = JSON.parse(localStorage.getItem("Data")) || [];
+
+    arr.push(obj);
+
+    localStorage.setItem("Data", JSON.stringify(arr));
+
+    updateDisplay();
+
+    event.target.reset();
+  }
+
+  const updateDisplay = () => {
+    const updatedData = JSON.parse(localStorage.getItem("Data")) || [];
+
+    let tr = "";
+
+    updatedData.map((ele, index) => {
+      tr += `
+        <tr>
+            <td>${index + 1}</td>    
+            <td>${ele.email}</td>    
+            <td>${ele.password}</td>    
+            <td><button>Edit</button><button onclick="handleDelete(${index})">Delete</button></td>    
+        </tr>
+    `;
+    });
+
+    document.getElementById("tableData").innerHTML = tr;
+  };
+
+  const handleDelete = (i) => {
+    // console.log(i);
+    const updatedData = JSON.parse(localStorage.getItem("Data")) || [];
+    updatedData.splice(i, 1);
+    localStorage.setItem("Data", JSON.stringify(updatedData));
+    updateDisplay();
+  };
+
+  updateDisplay();
+
+  // Splice
+
+  //   let arr = [2, 65, 62, 9, 52, 565, 9623];
+  //   arr.splice(4, 1);
+  //   console.log(arr);
+</script>
