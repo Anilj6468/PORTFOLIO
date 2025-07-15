@@ -1,0 +1,334 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@700&family=Rubik:ital,wght@0,700;1,700&display=swap');
+/* Header CSS Starts */
+body {
+        font-family: "Poppins", serif;
+}
+header 
+{
+  width: 100%;
+  height: 85px;
+  display: flex;
+  align-items: center;
+}
+header .logo a
+{
+  width: 380px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .logo img 
+{
+  width: 50%;
+  height: 50%;
+}
+nav ul 
+{
+  display: flex;
+  gap: 40px;
+  font-size: 20px;
+  align-items: center;
+  padding-left: 300px;
+}
+nav ul li a:hover
+{
+  color: blue;
+}
+nav label
+{
+  display: none;
+}
+header button 
+{
+   padding: 10px 30px 10px 30px;
+   border-radius: 5px;
+   font-size: 16px;
+   font-weight: bold;
+   color: white;
+   background: #002333;
+   margin-left: 400px;
+   cursor: pointer;
+}
+header button:hover
+{
+  margin-bottom: 5px;
+  color: rgba(155, 245, 252, 0.986);
+}
+ header nav ul li a 
+ {
+   color: #414141;
+   font-weight: 500;
+   font-size: 22px;
+}
+/* Header CSS Ends */
+
+/* Section-1 CSS Starts */
+ #section_1 {
+            /* border: 1px solid black; */
+            width: 100%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            background-color: #0acaa8;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 85%, rgba(203, 207, 207, 1) 100%);
+        }
+
+        /* viewport height */
+
+        #section_1 h1 {
+            color: #002333;
+            font-size: 45px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        #section_1 p {
+            color: #333333;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .icon-text {
+            /* border: 1px solid black; */
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon-text1 {
+            /* border: 1px solid red; */
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-text1 p {
+            font-weight: 600;
+            font-size: 70px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background-color: #39C0ff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon i {
+            color: white;
+        }
+
+        #section_1 button {
+            border: none;
+            padding: 20px 40px;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #002333;
+            cursor: pointer;
+            transition: ease-in-out 0.8s;
+        }
+        #section_1 button:hover
+        {
+           transform: translateY(-10px);
+           color: purple;
+        }
+/* Section-1 CSS Ends */
+
+/* Section-2  CSS Starts */
+#section_2
+{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.box1
+{
+  width: 30%;
+  height: 400px;
+  border: 2px dotted black;
+  border-radius: 5%;
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.box1 h2
+{
+  color: #64d4c5;
+  font-size: 30px;
+  font-weight: 900;
+}
+.text1
+{
+  font-size: 20px;
+}
+.box2
+{
+  width: 30%;
+  height: 400px;
+  border: 2px dotted black;
+  border-radius: 5%;
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.box2 h2
+{
+  color: #64d4c5;
+  font-size: 30px;
+  font-weight: 900;
+
+}
+.text2
+{
+  font-size: 20px;
+}
+.box3
+{
+  width: 30%;
+  height: 400px;
+  border: 2px dotted black;
+  border-radius: 5%;
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.box3 h2
+{
+  color: #64d4c5;
+  font-size: 30px;
+  font-weight: 900;
+
+}
+.text2
+{
+  font-size: 20px;
+}
+.btn
+{
+  width: 25%;
+  height: 56px;
+  background: #002333;
+  font-size: 22px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-left: 600px;
+  transform: translatex(10px) translateY(10px);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 19px;
+  transition: ease-in-out 0.7s;
+}
+.btn:hover
+{
+  transform: translateY(-10px);
+}
+/* Section-2  CSS Ends */
+
+/* Section-3 Starts */
+#section_3
+{
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  /* border: 1px solid black; */
+  margin-top: 50px;
+  gap: 10px;
+}
+#section_3 .anil
+{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+#section_3 .content
+{
+  width: 55%;
+  height: 400px;
+  /* border: 1px solid black; */
+  padding-top: 25px;
+  padding-left: 25px;
+}
+.content h1
+{
+  font-size: 35px;
+  font-weight: 800;
+  color: #002333;
+  padding-left: 25px;
+}
+h1 .poppins-extrabold {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.content .para
+{
+    font-weight: 400;
+    font-size: 25px;
+    color: #333333;
+    line-height: 1.5;
+    padding-top: 20px;
+    padding-left: 25px;
+}
+.para .poppins-regular 
+{
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.content .icon-text1 li
+{
+    width: 270px;
+    height: 30px;
+    color: #333333;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    background: aquamarine;
+    margin-left: 25px;
+    margin-top: 20px;
+    padding: 5px 5px 10px 20px;
+    text-align: center;
+}
+.anil .img1
+{
+  width: 600px;
+  height: auto;
+  margin: 40px 40px 40px 40px;
+  background-size: auto;
+  background-image: inherit;
+  padding-right: 50px;
+}
+.img1 img
+{
+  width: 100%;
+  height: 100%;
+}
+/* Section-3Ends */
