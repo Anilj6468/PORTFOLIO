@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona API Project</title>
+</head>
+<body>
+    <table border="1" cellspacing="0" cellpadding="10">
+        <thead>
+        <tr>
+                <th>SR No</th>
+                <th>Location</th>
+                <th>Confirmed Cases Indian</th>
+                <th>Confirmed Cases Foreign</th>
+                <th>Discharged</th>
+                <th>Deaths</th>
+        </tr>
+    </thead>
+    <tbody id = "tabledata">
+
+    </tbody>
+    </table>
+</body>
+</html>
+<script>
+    fetch("https://api.rootnet.in/covid19-in/stats/latest")
+    .then((res) => res.json())
+    .then((corona) => {
+        // console.log(corona);
+        
+        let tr = "";
+
+        corona.map ((ele, index) => {
+            tr+= `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${ele.Location}</td>
+                    <td>${ele.confirmedCasesIndian}</td>
+                    <td>${ele.ConfirmedCasesForeign}</td>
+                    <td>${ele.Discharged}</td>
+                    <td>${ele.Deaths}</td>
+                </tr>
+            `;
+        });
+        document.getElementById("tabledata").innerHTML = tr;
+    });
+</script>

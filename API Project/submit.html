@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Data Practice Project</title>
+  </head>
+  <!-- <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 10px 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    button[type="reset"] {
+      background-color: #f44336;
+      color: white;
+    }
+  </style> -->
+  <body>
+    <form id="form" onsubmit="handleformsubmit(event)">
+      <input
+        type="text"
+        name="username"
+        placeholder="User Name"
+        id="username"
+      /><br /><br />
+      <input
+        type="text"
+        name="email"
+        placeholder="E-Mail"
+        id="email"
+      /><br /><br />
+      <input
+        type="text"
+        name="Password"
+        placeholder="Password"
+        id="pass"
+      /><br /><br />
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+</html>
+<script>
+  function handleformsubmit(event) {
+    event.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
+
+    // console.log(username);
+    // console.log(email);
+    // console.log(pass);
+
+    let data1 = localStorage.getItem("data1");
+
+    console.log(data1);
+
+    let obj = {
+      name,
+      email,
+      pass,
+    };
+
+    console.log(obj);
+
+    event.target.reset();
+
+    // localStorage - 5MB (setItem, getItem, removeItem)
+    // key, value(array of object)
+
+    // let data = "Anil Jangid";
+
+    // // set
+    // localStorage.setItem = ("data", "Anil Jangid");
+    // localStorage.setItem = ("data","Anil Jangid");
+
+    // get
+  }
+</script>
+
+<script>
+  // Events
+  // mouse - click, dblclick, mouseover, mouseleave, contextmenu
+  // keyboard - keypress, keyup, keydown
+  // form - focus, blur, input, change, select, submit
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    let name = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let obj = {
+      username,
+      email,
+      password,
+    };
+
+    let arr = JSON.parse(localStorage.getItem("UserData")) || [];
+
+    arr.push(obj);
+
+    localStorage.setItem("UserData", JSON.stringify(arr));
+
+    event.target.reset();
+  };
+
+  // array of object
+</script>

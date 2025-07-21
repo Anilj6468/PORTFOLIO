@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Add to Cart Project</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    #products > div {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 250px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    button.addToCartBtn {
+      padding: 50px 50px;
+      background-color: blueviolet;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #cartItems {
+      border-top: 2px solid #000;
+      margin-top: 40px;
+      padding-top: 20px;
+    }
+
+    #cartItems > div {
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <body>
+    <h2 style="text-align: center; color: blueviolet">
+      Shirt & T-Shirt Products
+    </h2>
+    <div
+      id="products"
+    ></div>
+
+    <div id="cartItems"></div>
+  </body>
+</html>
+<script>
+  // Add to Cart
+  const products = [
+    {
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxw3Db-Pi4bXHtk3tyMOrKiw86d5Sj7yyKJVwAugXJ98FyGWAJHV1hhzJpO6PG73QoESo&usqp=CAU",
+      title: "Men's Cottswool Gingham Checks Full Sleeves Shirt (Steel Grey)",
+      price: 30.99,
+      description:
+        "Refining the sartorial experience for young and driven men. Testament to Timeless Elegance and sophisticated styles designed for forward thinking men.",
+    },
+    {
+      image:
+        "https://thebanyantee.com/cdn/shop/files/Black-T-shirt.jpg?v=1721380366&width=823",
+      title: "Custom T shirt (Single Side Printing)",
+      price: 30.99,
+      description:
+        "Custom T shirt by The Banyan Tee at Rs. 50 OFF 7XL (Chest 60 IN) / Navy",
+    },
+    {
+      image:
+        "https://media.istockphoto.com/id/1726263781/vector/blank-black-t-shirt-template.jpg?s=612x612&w=0&k=20&c=D99VMv8nYh1tmSZO61Do3OYbUldC4JMQt7OiyyTaLG8=",
+      title:
+        "793,400+ T Shirt Stock Photos, Pictures & Royalty-Free Images - iStock | Tshirt template, Tshirt design",
+      price: 40.99,
+      description: "T Shirt Stock Photos, Pictures & Royalty-Free Images",
+    },
+    {
+      image: "https://m.media-amazon.com/images/I/71a-0tfK5PL._SL1500_.jpg",
+      title:
+        "Men Shirt | Cotton Regular Fit Casual Shirt | Full Sleeves Blue, Medium",
+      price: 40.99,
+      description:
+        "Men Shirt | Cotton Regular Fit Casual Shirt | Full Sleeves Blue, Medium : Amazon.in: Clothing",
+    },
+    {
+      image:
+        "https://imagescdn.louisphilippe.com/img/app/product/3/39676856-13741100.jpg?auto=format&w=390",
+      title: "Louis Philippe Men's Checkered Slim Fit Shirt",
+      price: 40.99,
+      description: "Louis Philippe Men's Checkered Slim Fit Shirt in India.",
+    },
+    {
+      image:
+        "https://www.jiomart.com/images/product/original/rvmn3zoflp/royar-traders-shirt-shirts-shirt-for-men-men-shirt-kids-shirt-formal-shirt-cotton-shirt-slim-fit-shirt-half-sleeve-shirt-solid-color-shirt-office-wear-shirt-summer-shirt-party-wear-shirt-stylish-shirt-green-xxl-product-images-rvmn3zoflp-0-202409041841.jpg?im=Resize=(500,630)",
+      title:
+        "ROYAR TRADERS Shirt | Shirts | Shirt For Men | Men Shirt | Kids Shirt | Formal Shirt | Cotton Shirt",
+      price: 40.99,
+      description:
+        "ROYAR TRADERS Shirt | Shirts | Shirt For Men | Men Shirt | Kids Shirt | Formal Shirt | Cotton Shirt",
+    },
+  ];
+
+  console.log(products);
+
+  let cartItems = [];
+  let totalPrice = 0;
+
+  products.map((ele, index) => {
+    let eleContainer = document.createElement("div");
+
+    eleContainer.innerHTML = `
+      <img src="${ele.image}" alt="" width="200" />
+      <h2>${ele.title}</h2>
+      <h3>$${ele.price}</h3>
+      <h3>$${ele.description}</h3>
+      <button class="addToCartBtn">Add To Cart</button>
+  `;
+    document.getElementById("products").appendChild(eleContainer);
+
+    let addToCartBtn = document.querySelectorAll(".addToCartBtn")[index];
+
+    addToCartBtn.addEventListener("click", () => {
+      cartItems.push({
+        title: ele.title,
+        image: ele.image,
+        price: ele.price,
+        description: ele.description,
+      });
+
+      totalPrice += ele.price;
+
+      displayCart();
+
+      console.log(cartItems);
+      console.log(totalPrice);
+    });
+
+    console.log(addToCartBtn);
+
+    const displayCart = () => {
+      const cartContainer = document.getElementById("cartItems");
+      cartContainer.innerHTML = ""; // Clear existing cart items
+
+      cartItems.forEach((ele) => {
+        let cartDiv = document.createElement("div");
+
+        cartDiv.innerHTML = `
+      <img src="${ele.image}" width="100"/>
+      <h2>${ele.title}</h2>
+      <p>${ele.description}</p>
+      <h3>Price: $${ele.price.toFixed(2)}</h3>
+      <hr />
+    `;
+
+        cartContainer.appendChild(cartDiv);
+		
+      });
+
+      // Optional: show total price
+      let totalPriceElement = document.createElement("h2");
+      totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+      cartContainer.appendChild(totalPriceElement);
+
+      addToCartBtn.disabled = true;
+      addToCartBtn.textContent = "Added";
+
+	  document.getElementById("cartDiv").innerHTML = cartDiv;
+
+    };
+  });
+</script>

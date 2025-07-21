@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anil Jangid Add to Cart Project</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1, h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    background-color: #ffffff;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  .product, .cart-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    transition: transform 0.2s;
+  }
+
+  .product:hover, .cart-item:hover {
+    transform: translateY(-5px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .product h2, .cart-item h2 {
+    margin: 10px 0 5px;
+  }
+
+  .product h4, .cart-item h4 {
+    color: #28a745;
+    margin: 5px 0;
+  }
+
+  .addtocartbtn,
+  .cart-item button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .addtocartbtn:hover,
+  .cart-item button:hover {
+    background-color: #0056b3;
+  }
+
+  #productList, #cartList {
+    padding: 0 10px;
+  }
+
+  p {
+    text-align: center;
+    font-style: italic;
+  }
+</style>
+
+<form id="productForm">
+    <label for="image">Image: </label>
+    <input type="file" id="image" accept="image/*" /><br><br>
+
+    <label for="pname">Product Name: </label>
+    <input type="text" id="pname" placeholder="Product Name" /><br><br>
+
+    <label for="title">Title: </label>
+    <input type="text" id="title" placeholder="Title" /><br><br>
+
+    <label for="description">Description: </label>
+    <input type="text" id="description" placeholder="Description" /><br><br>
+
+    <label for="price">Price: </label>
+    <input type="text" id="price" placeholder="Price" /><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Products</h2>
+  <div id="productList"></div>
+
+  <h2>Cart</h2>
+  <div id="cartList"></div>
+
+  <script>
+    const productForm = document.getElementById("productForm");
+    const productList = document.getElementById("productList");
+    const cartList = document.getElementById("cartList");
+
+    let cart = [];
+
+    productForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const imageInput = document.getElementById("image");
+      const pname = document.getElementById("pname").value;
+      const title = document.getElementById("title").value;
+      const description = document.getElementById("description").value;
+      const price = document.getElementById("price").value;
+
+      const file = imageInput.files[0];
+      if (!file) {
+        alert("Please select an image.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageUrl = e.target.result;
+
+        const productHTML = document.createElement("div");
+        productHTML.className = "product";
+
+        // Apply custom styles using JavaScript
+        productHTML.style.backgroundColor = "#f9f9f9";
+        productHTML.style.borderRadius = "10px";
+        productHTML.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+        productHTML.style.padding = "15px";
+        productHTML.style.marginBottom = "15px";
+
+        productHTML.innerHTML = `
+          <img src="${imageUrl}" alt="Product Image" />
+          <h2>${pname}</h2>
+          <h3>${title}</h3>
+          <p>${description}</p>
+          <h4>₹${price}</h4>
+          <button class="addtocartbtn">Add to Cart</button>
+        `;
+
+        productList.appendChild(productHTML);
+
+        // Add to Cart Button
+        productHTML.querySelector(".addtocartbtn").addEventListener("click", () => {
+          addToCart({
+            imageUrl,
+            pname,
+            title,
+            description,
+            price
+          });
+        });
+
+        productForm.reset();
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    function addToCart(product) {
+      cart.push(product);
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      cartList.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartList.innerHTML = "<p>Cart is empty.</p>";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item";
+
+        // Apply cart item styles dynamically
+        cartItem.style.backgroundColor = "#fffbe6";
+        cartItem.style.borderRadius = "8px";
+        cartItem.style.boxShadow = "0 1px 5px rgba(0, 0, 0, 0.1)";
+        cartItem.style.padding = "12px";
+        cartItem.style.marginBottom = "10px";
+
+        cartItem.innerHTML = `
+          <img src="${item.imageUrl}" />
+          <h2>${item.pname}</h2>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <h4>₹${item.price}</h4>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartList.appendChild(cartItem);
+      });
+    }
+
+    // Expose remove function globally
+    window.removeFromCart = removeFromCart;
+  </script>
+</body>
+</html>

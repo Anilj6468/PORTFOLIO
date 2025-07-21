@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Capacity Table</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e1f5fe;
+    }
+
+    caption {
+      caption-side: top;
+      font-size: 1.5em;
+      margin-bottom: 10px 10px;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>SR No</th>
+          <th>State</th>
+          <th>Rural Hospitals Count</th>
+          <th>RuralBeds</th>
+          <th>UrbanHospitals</th>
+          <th>UrbanBeds</th>
+          <th>Total Hospitals Count</th>
+          <th>Total Beds Count</th>
+          <th>Last Updated</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody id="tabledata"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  fetch(
+    "https://api.steinhq.com/v1/storages/5e732accb88d3d04ae0815ae/StateWiseHealthCapacity"
+  )
+    .then((res) => res.json())
+    .then((corona1) => {
+      console.log(corona1);
+
+      let tr = "";
+
+      corona1.map((ele, index) => {
+        tr += `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${ele.State}</td>
+            <td>${ele.RuralHospitalsCount}</td>
+            <td>${ele.RuralBeds}</td>
+            <td>${ele.UrbanHospitals}</td>
+            <td>${ele.UrbanBeds}</td>
+            <td>${ele.TotalHospitalsCount}</td>
+            <td>${ele.TotalBedsCount}</td>
+            <td>${ele.LastUpdated}</td>
+            <td><a href="${ele.Source}" target="_blank" rel="noopener noreferrer">LocationWiseLink</a></td>
+        </tr>
+    `;
+      });
+      document.getElementById("tabledata").innerHTML = tr;
+    });
+</script>
